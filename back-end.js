@@ -64,6 +64,33 @@ const priority1Only = function (todos) {
   return todos.filter(isLowPriority)
 }
 
+const notCompleteFirstHelper = function(thing1,thing2){
+    if (getCompleteness(thing1) > getCompleteness(thing2)){
+      return 1
+    } else if(getCompleteness(thing1) < getCompleteness(thing2)){
+      return -1
+    } else {
+      return 0
+    }
+  }
+  const notCompleteFirst = function(arr){
+    let newArr = arr.slice();
+    return newArr.sort(notCompleteFirstHelper)
+  }
+  const priority2FirstHelper = function(thing1,thing2){
+    if (getPriority(thing1) > getPriority(thing2)){
+      return -1
+    } else if(getPriority(thing1) < getPriority(thing2)){
+      return 1
+    } else {
+      return 0
+    }
+  }
+  const priority2First = function(arr){
+    let newArr = arr.slice();
+    return newArr.sort(priority2FirstHelper)
+  }
+
 if (typeof notCompleteFirst === 'undefined') {
   notCompleteFirst = undefined;
 }
